@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="GITT-179.TailspinToys2020-US"
+  DTS:DTSID="{F7794375-114B-4845-9991-7B168340029D}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=GITT-179;Initial Catalog=TailspinToys2020-US;Provider=SQLNCLI10.1;Integrated Security=SSPI;Application Name=SSIS-TailspinToysDW-{F7794375-114B-4845-9991-7B168340029D}GITT-179.TailspinToys2020-US;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

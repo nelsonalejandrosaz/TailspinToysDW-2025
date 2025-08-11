@@ -1,0 +1,579 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/11/2025 11:29:43 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="GITT-179"
+  DTS:CreatorName="SIGET\nsaz"
+  DTS:DTSID="{D272649A-094F-464E-94A5-643869E781DB}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
+  DTS:LocaleID="17418"
+  DTS:ObjectName="DimChunk"
+  DTS:PackageType="5"
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{568ADB92-5199-442B-A62E-7FE29E730CC5}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[GITT-179.TailspinToysDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E6FD5DB7-C71B-47A1-926E-2EE7B08B45FC}"
+      DTS:ObjectName="GITT-179.TailspinToysDW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=GITT-179;Initial Catalog=TailspinToysDW;Provider=SQLNCLI10.1;Integrated Security=SSPI;Application Name=SSIS-DimProduct-{E6FD5DB7-C71B-47A1-926E-2EE7B08B45FC}GITT-179.TailspinToysDW;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DimChunk"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{760C3C26-D696-45AC-82DA-371A2049527A}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DimChunk"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DimChunk\Escribir tabla DimChunk"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Escribir tabla DimChunk"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimChunk]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimChunk\Escribir tabla DimChunk.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[GITT-179.TailspinToysDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[GITT-179.TailspinToysDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DimChunk\Escribir tabla DimChunk.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimChunk\Escribir tabla DimChunk.Inputs[OLE DB Destination Input].Columns[ItemGroup]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ItemGroup"
+                      externalMetadataColumnId="Package\DimChunk\Escribir tabla DimChunk.Inputs[OLE DB Destination Input].ExternalColumns[ItemGroup]"
+                      lineageId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Output].Columns[ItemGroup]" />
+                    <inputColumn
+                      refId="Package\DimChunk\Escribir tabla DimChunk.Inputs[OLE DB Destination Input].Columns[KitType]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="KitType"
+                      externalMetadataColumnId="Package\DimChunk\Escribir tabla DimChunk.Inputs[OLE DB Destination Input].ExternalColumns[KitType]"
+                      lineageId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Output].Columns[KitType]" />
+                    <inputColumn
+                      refId="Package\DimChunk\Escribir tabla DimChunk.Inputs[OLE DB Destination Input].Columns[Channels]"
+                      cachedDataType="ui1"
+                      cachedName="Channels"
+                      externalMetadataColumnId="Package\DimChunk\Escribir tabla DimChunk.Inputs[OLE DB Destination Input].ExternalColumns[Channels]"
+                      lineageId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Output].Columns[Channels]" />
+                    <inputColumn
+                      refId="Package\DimChunk\Escribir tabla DimChunk.Inputs[OLE DB Destination Input].Columns[Demographic]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Demographic"
+                      externalMetadataColumnId="Package\DimChunk\Escribir tabla DimChunk.Inputs[OLE DB Destination Input].ExternalColumns[Demographic]"
+                      lineageId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Output].Columns[Demographic]" />
+                    <inputColumn
+                      refId="Package\DimChunk\Escribir tabla DimChunk.Inputs[OLE DB Destination Input].Columns[PromotionCode]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="PromotionCode"
+                      externalMetadataColumnId="Package\DimChunk\Escribir tabla DimChunk.Inputs[OLE DB Destination Input].ExternalColumns[PromotionCode]"
+                      lineageId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Output].Columns[PromotionCode]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DimChunk\Escribir tabla DimChunk.Inputs[OLE DB Destination Input].ExternalColumns[ChunkKey]"
+                      dataType="i4"
+                      name="ChunkKey" />
+                    <externalMetadataColumn
+                      refId="Package\DimChunk\Escribir tabla DimChunk.Inputs[OLE DB Destination Input].ExternalColumns[PromotionCode]"
+                      dataType="wstr"
+                      length="20"
+                      name="PromotionCode" />
+                    <externalMetadataColumn
+                      refId="Package\DimChunk\Escribir tabla DimChunk.Inputs[OLE DB Destination Input].ExternalColumns[Channels]"
+                      dataType="ui1"
+                      name="Channels" />
+                    <externalMetadataColumn
+                      refId="Package\DimChunk\Escribir tabla DimChunk.Inputs[OLE DB Destination Input].ExternalColumns[Demographic]"
+                      dataType="wstr"
+                      length="50"
+                      name="Demographic" />
+                    <externalMetadataColumn
+                      refId="Package\DimChunk\Escribir tabla DimChunk.Inputs[OLE DB Destination Input].ExternalColumns[KitType]"
+                      dataType="wstr"
+                      length="3"
+                      name="KitType" />
+                    <externalMetadataColumn
+                      refId="Package\DimChunk\Escribir tabla DimChunk.Inputs[OLE DB Destination Input].ExternalColumns[ItemGroup]"
+                      dataType="wstr"
+                      length="50"
+                      name="ItemGroup" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimChunk\Escribir tabla DimChunk.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DimChunk\Escribir tabla DimChunk.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimChunk\Escribir tabla DimChunk.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimChunk\Escribir tabla DimChunk.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimChunk\Escribir tabla DimChunk.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimChunk\Escribir tabla DimChunk.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimChunk\Leer tablas relacionadas"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Leer tablas relacionadas"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select distinct
+    P.ItemGroup,
+    P.KitType,
+    P.Channels,
+    P.Demographic,
+    -- Si PromotionCode es NULL, se inserta un valor por defecto 'NoCode'
+    isnull(S.PromotionCode, 'NoCode') as PromotionCode
+from [TailspinToys2020-US]..Product P
+inner join [TailspinToys2020-US]..Sales S on P.ProductID = S.ProductID;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimChunk\Leer tablas relacionadas.Connections[OleDbConnection]"
+                  connectionManagerID="{F7794375-114B-4845-9991-7B168340029D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[GITT-179.TailspinToys2020-US]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Output].Columns[ItemGroup]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Output].ExternalColumns[ItemGroup]"
+                      length="50"
+                      lineageId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Output].Columns[ItemGroup]"
+                      name="ItemGroup"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Output].Columns[KitType]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Output].ExternalColumns[KitType]"
+                      length="3"
+                      lineageId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Output].Columns[KitType]"
+                      name="KitType"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Output].Columns[Channels]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Output].ExternalColumns[Channels]"
+                      lineageId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Output].Columns[Channels]"
+                      name="Channels"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Output].Columns[Demographic]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Output].ExternalColumns[Demographic]"
+                      length="50"
+                      lineageId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Output].Columns[Demographic]"
+                      name="Demographic"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Output].Columns[PromotionCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Output].ExternalColumns[PromotionCode]"
+                      length="20"
+                      lineageId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Output].Columns[PromotionCode]"
+                      name="PromotionCode"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Output].ExternalColumns[ItemGroup]"
+                      dataType="wstr"
+                      length="50"
+                      name="ItemGroup" />
+                    <externalMetadataColumn
+                      refId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Output].ExternalColumns[KitType]"
+                      dataType="wstr"
+                      length="3"
+                      name="KitType" />
+                    <externalMetadataColumn
+                      refId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Output].ExternalColumns[Channels]"
+                      dataType="ui1"
+                      name="Channels" />
+                    <externalMetadataColumn
+                      refId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Output].ExternalColumns[Demographic]"
+                      dataType="wstr"
+                      length="50"
+                      name="Demographic" />
+                    <externalMetadataColumn
+                      refId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Output].ExternalColumns[PromotionCode]"
+                      dataType="wstr"
+                      length="20"
+                      name="PromotionCode" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Error Output].Columns[ItemGroup]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Error Output].Columns[ItemGroup]"
+                      name="ItemGroup" />
+                    <outputColumn
+                      refId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Error Output].Columns[KitType]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Error Output].Columns[KitType]"
+                      name="KitType" />
+                    <outputColumn
+                      refId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Error Output].Columns[Channels]"
+                      dataType="ui1"
+                      lineageId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Error Output].Columns[Channels]"
+                      name="Channels" />
+                    <outputColumn
+                      refId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Error Output].Columns[Demographic]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Error Output].Columns[Demographic]"
+                      name="Demographic" />
+                    <outputColumn
+                      refId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Error Output].Columns[PromotionCode]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Error Output].Columns[PromotionCode]"
+                      name="PromotionCode" />
+                    <outputColumn
+                      refId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DimChunk.Paths[OLE DB Source Output]"
+              endId="Package\DimChunk\Escribir tabla DimChunk.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DimChunk\Leer tablas relacionadas.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Limpiar datos existentes"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{1E704BBA-AAAE-4E2D-A6C2-CBA3979FC429}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Limpiar datos existentes"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E6FD5DB7-C71B-47A1-926E-2EE7B08B45FC}"
+          SQLTask:SqlStatementSource="delete from DimChunk;&#xA;DBCC CHECKIDENT ('DimChunk', RESEED, 0);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{A256985A-464F-4627-8B61-A03FE5DFD3AB}"
+      DTS:From="Package\Limpiar datos existentes"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\DimChunk" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="130,42"
+          Id="Package\DimChunk"
+          TopLeft="543,228" />
+        <NodeLayout
+          Size="198,42"
+          Id="Package\Limpiar datos existentes"
+          TopLeft="528,123" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="627,165">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-19,63"
+              Start="0,0"
+              End="-19,55.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.5"
+                    Point2="0,31.5"
+                    Point3="-4,31.5" />
+                  <mssgle:LineSegment
+                    End="-15,31.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-15,31.5"
+                    Point2="-19,31.5"
+                    Point3="-19,35.5" />
+                  <mssgle:LineSegment
+                    End="-19,55.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DimChunk">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="199,42"
+          Id="Package\DimChunk\Leer tablas relacionadas"
+          TopLeft="513,70" />
+        <NodeLayout
+          Size="197,42"
+          Id="Package\DimChunk\Escribir tabla DimChunk"
+          TopLeft="500,213" />
+        <EdgeLayout
+          Id="Package\DimChunk.Paths[OLE DB Source Output]"
+          TopLeft="612.5,112">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-14,101"
+              Start="0,0"
+              End="-14,93.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,46.5"
+                    Point2="0,50.5"
+                    Point3="-4,50.5" />
+                  <mssgle:LineSegment
+                    End="-10,50.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-10,50.5"
+                    Point2="-14,50.5"
+                    Point3="-14,54.5" />
+                  <mssgle:LineSegment
+                    End="-14,93.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimChunk\Leer tablas relacionadas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimChunk\Escribir tabla DimChunk">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

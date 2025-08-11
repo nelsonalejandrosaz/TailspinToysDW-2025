@@ -1,0 +1,738 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/11/2025 11:29:43 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="GITT-179"
+  DTS:CreatorName="SIGET\nsaz"
+  DTS:DTSID="{863ED4E0-65EF-454B-8252-744C75901B68}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
+  DTS:LocaleID="17418"
+  DTS:ObjectName="DimProduct"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{E181BDDB-A1A8-4D71-B6A2-28F7A95AD118}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[GITT-179.TailspinToysDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9BA694E0-C539-4DC2-833E-5DADDF71DB34}"
+      DTS:ObjectName="GITT-179.TailspinToysDW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=GITT-179;Initial Catalog=TailspinToysDW;Provider=SQLNCLI10.1;Integrated Security=SSPI;Application Name=SSIS-DimProduct-{9BA694E0-C539-4DC2-833E-5DADDF71DB34}GITT-179.TailspinToysDW;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DimProductos"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{92B5CC1F-6DA2-47D2-A0B1-4791B990E461}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DimProductos"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DimProductos\Agregar columnas fecha"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Agregar columnas fecha"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DimProductos\Agregar columnas fecha.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimProductos\Agregar columnas fecha.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DimProductos\Agregar columnas fecha.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimProductos\Agregar columnas fecha.Outputs[Derived Column Output].Columns[StartDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DimProductos\Agregar columnas fecha.Outputs[Derived Column Output].Columns[StartDate]"
+                      name="StartDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DimProductos\Agregar columnas fecha.Outputs[Derived Column Output].Columns[EndDate]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DimProductos\Agregar columnas fecha.Outputs[Derived Column Output].Columns[EndDate]"
+                      name="EndDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">NULL(DT_I1)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">NULL(DT_I1)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DimProductos\Agregar columnas fecha.Outputs[Derived Column Output].Columns[Active]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DimProductos\Agregar columnas fecha.Outputs[Derived Column Output].Columns[Active]"
+                      name="Active"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DimProductos\Agregar columnas fecha.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DimProductos\Agregar columnas fecha.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimProductos\Agregar columnas fecha.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimProductos\Agregar columnas fecha.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimProductos\Agregar columnas fecha.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimProductos\Agregar columnas fecha.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimProductos\Escribir tabla DimProductos"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Escribir tabla DimProductos"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimProduct]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimProductos\Escribir tabla DimProductos.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[GITT-179.TailspinToysDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[GITT-179.TailspinToysDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DimProductos\Escribir tabla DimProductos.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimProductos\Escribir tabla DimProductos.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                      cachedDataType="i4"
+                      cachedName="ProductID"
+                      externalMetadataColumnId="Package\DimProductos\Escribir tabla DimProductos.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      lineageId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Output].Columns[ProductID]" />
+                    <inputColumn
+                      refId="Package\DimProductos\Escribir tabla DimProductos.Inputs[OLE DB Destination Input].Columns[ProductSKU]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductSKU"
+                      externalMetadataColumnId="Package\DimProductos\Escribir tabla DimProductos.Inputs[OLE DB Destination Input].ExternalColumns[ProductSKU]"
+                      lineageId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Output].Columns[ProductSKU]" />
+                    <inputColumn
+                      refId="Package\DimProductos\Escribir tabla DimProductos.Inputs[OLE DB Destination Input].Columns[ProductName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductName"
+                      externalMetadataColumnId="Package\DimProductos\Escribir tabla DimProductos.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                      lineageId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Output].Columns[ProductName]" />
+                    <inputColumn
+                      refId="Package\DimProductos\Escribir tabla DimProductos.Inputs[OLE DB Destination Input].Columns[ProductCategory]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductCategory"
+                      externalMetadataColumnId="Package\DimProductos\Escribir tabla DimProductos.Inputs[OLE DB Destination Input].ExternalColumns[ProductCategory]"
+                      lineageId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Output].Columns[ProductCategory]" />
+                    <inputColumn
+                      refId="Package\DimProductos\Escribir tabla DimProductos.Inputs[OLE DB Destination Input].Columns[RetailPrice]"
+                      cachedDataType="cy"
+                      cachedName="RetailPrice"
+                      externalMetadataColumnId="Package\DimProductos\Escribir tabla DimProductos.Inputs[OLE DB Destination Input].ExternalColumns[RetailPrice]"
+                      lineageId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Output].Columns[RetailPrice]" />
+                    <inputColumn
+                      refId="Package\DimProductos\Escribir tabla DimProductos.Inputs[OLE DB Destination Input].Columns[StartDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="StartDate"
+                      externalMetadataColumnId="Package\DimProductos\Escribir tabla DimProductos.Inputs[OLE DB Destination Input].ExternalColumns[StartDate]"
+                      lineageId="Package\DimProductos\Agregar columnas fecha.Outputs[Derived Column Output].Columns[StartDate]" />
+                    <inputColumn
+                      refId="Package\DimProductos\Escribir tabla DimProductos.Inputs[OLE DB Destination Input].Columns[EndDate]"
+                      cachedDataType="i1"
+                      cachedName="EndDate"
+                      externalMetadataColumnId="Package\DimProductos\Escribir tabla DimProductos.Inputs[OLE DB Destination Input].ExternalColumns[EndDate]"
+                      lineageId="Package\DimProductos\Agregar columnas fecha.Outputs[Derived Column Output].Columns[EndDate]" />
+                    <inputColumn
+                      refId="Package\DimProductos\Escribir tabla DimProductos.Inputs[OLE DB Destination Input].Columns[Active]"
+                      cachedDataType="i4"
+                      cachedName="Active"
+                      externalMetadataColumnId="Package\DimProductos\Escribir tabla DimProductos.Inputs[OLE DB Destination Input].ExternalColumns[Active]"
+                      lineageId="Package\DimProductos\Agregar columnas fecha.Outputs[Derived Column Output].Columns[Active]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DimProductos\Escribir tabla DimProductos.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      dataType="i4"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\DimProductos\Escribir tabla DimProductos.Inputs[OLE DB Destination Input].ExternalColumns[ProductSKU]"
+                      dataType="wstr"
+                      length="50"
+                      name="ProductSKU" />
+                    <externalMetadataColumn
+                      refId="Package\DimProductos\Escribir tabla DimProductos.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                      dataType="wstr"
+                      length="50"
+                      name="ProductName" />
+                    <externalMetadataColumn
+                      refId="Package\DimProductos\Escribir tabla DimProductos.Inputs[OLE DB Destination Input].ExternalColumns[ProductCategory]"
+                      dataType="wstr"
+                      length="50"
+                      name="ProductCategory" />
+                    <externalMetadataColumn
+                      refId="Package\DimProductos\Escribir tabla DimProductos.Inputs[OLE DB Destination Input].ExternalColumns[RetailPrice]"
+                      dataType="cy"
+                      name="RetailPrice" />
+                    <externalMetadataColumn
+                      refId="Package\DimProductos\Escribir tabla DimProductos.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
+                      dataType="i4"
+                      name="ProductKey" />
+                    <externalMetadataColumn
+                      refId="Package\DimProductos\Escribir tabla DimProductos.Inputs[OLE DB Destination Input].ExternalColumns[StartDate]"
+                      dataType="dbDate"
+                      name="StartDate" />
+                    <externalMetadataColumn
+                      refId="Package\DimProductos\Escribir tabla DimProductos.Inputs[OLE DB Destination Input].ExternalColumns[EndDate]"
+                      dataType="dbDate"
+                      name="EndDate" />
+                    <externalMetadataColumn
+                      refId="Package\DimProductos\Escribir tabla DimProductos.Inputs[OLE DB Destination Input].ExternalColumns[Active]"
+                      dataType="bool"
+                      name="Active" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimProductos\Escribir tabla DimProductos.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DimProductos\Escribir tabla DimProductos.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimProductos\Escribir tabla DimProductos.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimProductos\Escribir tabla DimProductos.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimProductos\Escribir tabla DimProductos.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimProductos\Escribir tabla DimProductos.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimProductos\Leer tabla Products"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Leer tabla Products"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select
+    p.ProductID,
+    P.ProductSKU,
+    P.ProductName,
+    P.ProductCategory,
+    P.RetailPrice
+from [TailspinToys2020-US]..Product P;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimProductos\Leer tabla Products.Connections[OleDbConnection]"
+                  connectionManagerID="{F7794375-114B-4845-9991-7B168340029D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[GITT-179.TailspinToys2020-US]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Output].Columns[ProductID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                      lineageId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Output].Columns[ProductID]"
+                      name="ProductID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Output].Columns[ProductSKU]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Output].ExternalColumns[ProductSKU]"
+                      length="50"
+                      lineageId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Output].Columns[ProductSKU]"
+                      name="ProductSKU"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Output].Columns[ProductName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
+                      length="50"
+                      lineageId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Output].Columns[ProductName]"
+                      name="ProductName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Output].Columns[ProductCategory]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Output].ExternalColumns[ProductCategory]"
+                      length="50"
+                      lineageId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Output].Columns[ProductCategory]"
+                      name="ProductCategory"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Output].Columns[RetailPrice]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Output].ExternalColumns[RetailPrice]"
+                      lineageId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Output].Columns[RetailPrice]"
+                      name="RetailPrice"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                      dataType="i4"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Output].ExternalColumns[ProductSKU]"
+                      dataType="wstr"
+                      length="50"
+                      name="ProductSKU" />
+                    <externalMetadataColumn
+                      refId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
+                      dataType="wstr"
+                      length="50"
+                      name="ProductName" />
+                    <externalMetadataColumn
+                      refId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Output].ExternalColumns[ProductCategory]"
+                      dataType="wstr"
+                      length="50"
+                      name="ProductCategory" />
+                    <externalMetadataColumn
+                      refId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Output].ExternalColumns[RetailPrice]"
+                      dataType="cy"
+                      name="RetailPrice" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                      dataType="i4"
+                      lineageId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                      name="ProductID" />
+                    <outputColumn
+                      refId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Error Output].Columns[ProductSKU]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Error Output].Columns[ProductSKU]"
+                      name="ProductSKU" />
+                    <outputColumn
+                      refId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Error Output].Columns[ProductName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Error Output].Columns[ProductName]"
+                      name="ProductName" />
+                    <outputColumn
+                      refId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Error Output].Columns[ProductCategory]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Error Output].Columns[ProductCategory]"
+                      name="ProductCategory" />
+                    <outputColumn
+                      refId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Error Output].Columns[RetailPrice]"
+                      dataType="cy"
+                      lineageId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Error Output].Columns[RetailPrice]"
+                      name="RetailPrice" />
+                    <outputColumn
+                      refId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DimProductos.Paths[Derived Column Output]"
+              endId="Package\DimProductos\Escribir tabla DimProductos.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\DimProductos\Agregar columnas fecha.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DimProductos.Paths[OLE DB Source Output]"
+              endId="Package\DimProductos\Agregar columnas fecha.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\DimProductos\Leer tabla Products.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Limpiar datos existentes"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{51A40923-3B28-48B1-A3E4-BDDDB863B230}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Limpiar datos existentes"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{9BA694E0-C539-4DC2-833E-5DADDF71DB34}"
+          SQLTask:SqlStatementSource="delete from DimProduct&#xA;DBCC CHECKIDENT ('DimProduct', RESEED, 0);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{8B9F3C00-3759-4F12-9426-5B4DA81D86A1}"
+      DTS:From="Package\Limpiar datos existentes"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\DimProductos" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="148,42"
+          Id="Package\DimProductos"
+          TopLeft="543,228" />
+        <NodeLayout
+          Size="198,42"
+          Id="Package\Limpiar datos existentes"
+          TopLeft="528,123" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="627,165">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-10,63"
+              Start="0,0"
+              End="-10,55.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.5"
+                    Point2="0,31.5"
+                    Point3="-4,31.5" />
+                  <mssgle:LineSegment
+                    End="-6,31.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-6,31.5"
+                    Point2="-10,31.5"
+                    Point3="-10,35.5" />
+                  <mssgle:LineSegment
+                    End="-10,55.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DimProductos">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="174,42"
+          Id="Package\DimProductos\Leer tabla Products"
+          TopLeft="513,70" />
+        <NodeLayout
+          Size="215,42"
+          Id="Package\DimProductos\Escribir tabla DimProductos"
+          TopLeft="492,309" />
+        <NodeLayout
+          Size="198,42"
+          Id="Package\DimProductos\Agregar columnas fecha"
+          TopLeft="497,187" />
+        <EdgeLayout
+          Id="Package\DimProductos.Paths[OLE DB Source Output]"
+          TopLeft="598,112">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,75"
+              Start="0,0"
+              End="0,67.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DimProductos.Paths[Derived Column Output]"
+          TopLeft="597.75,229">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,80"
+              Start="0,0"
+              End="0,72.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,72.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimProductos\Leer tabla Products">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimProductos\Escribir tabla DimProductos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
