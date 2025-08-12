@@ -82,3 +82,5 @@ select * from DimStateRegion
 select * from DimTime
 select * from DimChunk
 select * from FactSales
+
+truncate table FactSales

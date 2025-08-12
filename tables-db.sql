@@ -61,6 +61,7 @@ create table Sales
 )
 go
 
+select * from Sales
 --select PromotionCode from Sales where PromotionCode is not null
 
 create table SalesOffice

@@ -6,7 +6,7 @@ use TailspinToysDW;
 delete from DimTime;
 DBCC CHECKIDENT ('DimTime', RESEED, 0);
 -- Variables de rango de fechas
-declare @FechaInicio date = '2020-01-01';
+declare @FechaInicio date = '2018-01-01';
 declare @FechaFin date = '2025-12-31';
 
 while @FechaInicio <= @FechaFin
@@ -115,3 +115,7 @@ inner join DimChunk dc on
     and dc.Demographic = p.Demographic
     and dc.KitType = p.KitType
     and dc.ItemGroup = p.ItemGroup
+
+select *
+from [TailspinToys2020-US]..Sales S
+join [TailspinToys2020-US]..Product P on S.ProductID = P.ProductID
