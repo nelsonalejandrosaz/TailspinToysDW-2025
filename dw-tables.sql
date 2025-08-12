@@ -3,8 +3,10 @@ if not exists (select * from sys.databases where name = 'TailspinToysDW')
 begin
     create database TailspinToysDW;
 end
+go
 -- Usar la base de datos TailspinToysDW
 use TailspinToysDW;
+go
 -- Crear las tablas de dimensiones y hechos para el Data Warehouse de Tailspin Toys
 -- Dimensión Producto
 create table DimProduct (
@@ -76,11 +78,3 @@ create table FactSales (
     foreign key (ChunkKey) references DimChunk(ChunkKey)
 );
 go;
-
-select * from DimProduct
-select * from DimStateRegion
-select * from DimTime
-select * from DimChunk
-select * from FactSales
-
-truncate table FactSales

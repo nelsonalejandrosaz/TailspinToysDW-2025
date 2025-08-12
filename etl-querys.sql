@@ -116,6 +116,10 @@ inner join DimChunk dc on
     and dc.KitType = p.KitType
     and dc.ItemGroup = p.ItemGroup
 
-select *
+select S.OrderNumber, S.OrderDate, S.CustomerStateID, S.ProductID, S.Quantity, S.UnitPrice, S.DiscountAmount, S.PromotionCode,
+       P.ItemGroup, P.KitType, P.Channels, P.Demographic
 from [TailspinToys2020-US]..Sales S
 join [TailspinToys2020-US]..Product P on S.ProductID = P.ProductID
+
+delete from FactSales
+DBCC CHECKIDENT ('FactSales', RESEED, 0);
